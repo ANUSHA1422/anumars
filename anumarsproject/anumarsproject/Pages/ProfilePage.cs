@@ -33,9 +33,14 @@ namespace anumarsproject.Pages
             }
 
         }
+        public string GetDescription(IWebDriver driver)
+        {
+            IWebElement newDescription = driver.FindElement(By.XPath("//textarea[@name='value']"));
+            return newDescription.Text;
+        }
 
 
-        public void AddLanguage(IWebDriver driver, string language)
+        public void AddLanguage(IWebDriver driver)
         {
             IWebElement LanguageTab = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
             LanguageTab.Click();
@@ -94,10 +99,20 @@ namespace anumarsproject.Pages
             IWebElement UpdateSkillButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
             UpdateSkillButton.Click();
 
+            IWebElement newskill = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
+            Assert.That(newskill.Text == "PAINT", "actual skill and expected skill do Not match");
+
+
             IWebElement DeleteSkill = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
             DeleteSkill.Click();
 
         }
+        public string Getskill(IWebDriver driver)
+        {
+            IWebElement newskill = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
+            return newskill.Text;
+        }
+
 
     }
 }

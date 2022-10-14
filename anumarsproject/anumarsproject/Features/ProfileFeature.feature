@@ -9,12 +9,14 @@ Scenario: Add languages in the portal
 	And I add a new language in the field
 	Then The language should be added successfully
 
-Scenario Outline: Edit language in the portal
-	 Given I Signed into the Mars portal successfully
-	 When I add a new language in the field
-	 And I Update '<Language>'the langugae in the portal
-	 Then The language should have updated '<Language>'
-Examples:
-| Language |
-|  english |
-|  telugu  |
+Scenario: Add skill in the portal
+ Given  I Signed into the Mars portal successfully
+ When I navigate to skill field
+ And I add a new skill in the field
+ Then The skill should be added successfully
+
+ Scenario: Add decsription in the portal
+ Given I Signed into the Mars portal successfully
+ When I navigate to description field
+ And I add a new description in the field
+ Then The description should be added successfully
